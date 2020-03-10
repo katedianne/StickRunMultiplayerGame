@@ -1,19 +1,20 @@
 ﻿Public Class Form1
+    Dim movementSpeed As Integer = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
-        Collision()
+        movementSpeed = 3
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim count As Integer
         count += 1
 
-        Dim movementSpeed As Integer = 3
         If count Mod 2 = 0 Then
             movementSpeed += 3
         End If
 
         MoveObs(movementSpeed)
+        Collision()
         GenerateObs()
     End Sub
 
@@ -52,24 +53,30 @@
     End Function
 
     Function GenerateObs()
+        Dim obstacle As New PictureBox
+
         Dim randomNumber As Double
         Dim upperLimit As Integer = 3
 
         randomNumber = Math.Ceiling(Rnd() * upperLimit)
 
         If randomNumber = 1 Then
-            Obs1.Top = Platform.Top - Player.Height - (Player.Height / 2)
-            Obs1.Width = 50
-            Obs1.Height = 100
+            obstacle.Top = Platform.Top - Player.Height - (Player.Height / 2)
+            obstacle.Left = Me.Width - 100
+            obstacle.Width = 50
+            obstacle.Height = 100
         ElseIf randomNumber = 2 Then
-            Obs1.Top = Platform.Top - (Player.Height / 2)
-            Obs1.Width = 50
-            Obs1.Height = 50
+            obstacle.Top = Platform.Top - (Player.Height / 2)
+            obstacle.Left = Me.Width - 100
+            obstacle.Width = 50
+            obstacle.Height = 50
         ElseIf randomNumber = 3 Then
-            Obs1.Top = Platform.Top - (Player.Height / 2)
-            Obs1.Width = 100
-            Obs1.Height = 50
+            obstacle.Top = Platform.Top - (Player.Height / 2)
+            obstacle.Left = Me.Width - 100
+            obstacle.Width = 100
+            obstacle.Height = 50
         End If
+        Me.Controls.Add(obstacle)
 
     End Function
 
