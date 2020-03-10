@@ -39,7 +39,7 @@ Partial Class Form1
         'Player
         '
         Me.Player.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Player.Location = New System.Drawing.Point(109, 166)
+        Me.Player.Location = New System.Drawing.Point(107, 172)
         Me.Player.Name = "Player"
         Me.Player.Size = New System.Drawing.Size(50, 100)
         Me.Player.TabIndex = 0
@@ -47,11 +47,12 @@ Partial Class Form1
         '
         'Timer1
         '
+        Me.Timer1.Interval = 20
         '
         'Obs1
         '
         Me.Obs1.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Obs1.Location = New System.Drawing.Point(399, 110)
+        Me.Obs1.Location = New System.Drawing.Point(399, 118)
         Me.Obs1.Name = "Obs1"
         Me.Obs1.Size = New System.Drawing.Size(50, 100)
         Me.Obs1.TabIndex = 0
@@ -60,7 +61,7 @@ Partial Class Form1
         'Obs2
         '
         Me.Obs2.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Obs2.Location = New System.Drawing.Point(508, 216)
+        Me.Obs2.Location = New System.Drawing.Point(509, 222)
         Me.Obs2.Name = "Obs2"
         Me.Obs2.Size = New System.Drawing.Size(50, 50)
         Me.Obs2.TabIndex = 0
@@ -69,7 +70,7 @@ Partial Class Form1
         'Obs3
         '
         Me.Obs3.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Obs3.Location = New System.Drawing.Point(618, 216)
+        Me.Obs3.Location = New System.Drawing.Point(618, 222)
         Me.Obs3.Name = "Obs3"
         Me.Obs3.Size = New System.Drawing.Size(100, 50)
         Me.Obs3.TabIndex = 0
