@@ -7,7 +7,14 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim count As Integer
         count += 1
-        MoveObs()
+
+        Dim movementSpeed As Integer = 3
+        If count Mod 2 = 0 Then
+            movementSpeed += 3
+        End If
+
+        MoveObs(movementSpeed)
+        GenerateObs()
     End Sub
 
     Class Obs
@@ -31,10 +38,10 @@
         End Property
     End Class
 
-    Function MoveObs()
-        Obs1.Left -= 3
-        Obs2.Left -= 3
-        Obs3.Left -= 3
+    Function MoveObs(movementSpeed)
+        Obs1.Left -= movementSpeed
+        Obs2.Left -= movementSpeed
+        Obs3.Left -= movementSpeed
     End Function
 
     Function Collision()
@@ -43,4 +50,28 @@
             MessageBox.Show("You're Dead!")
         End If
     End Function
+
+    Function GenerateObs()
+        Dim randomNumber As Double
+        Dim upperLimit As Integer = 3
+
+        randomNumber = Math.Ceiling(Rnd() * upperLimit)
+
+        If randomNumber = 1 Then
+            Obs1.Top = Platform.Top - Player.Height - (Player.Height / 2)
+            Obs1.Width = 50
+            Obs1.Height = 100
+        ElseIf randomNumber = 2 Then
+            Obs1.Top = Platform.Top - (Player.Height / 2)
+            Obs1.Width = 50
+            Obs1.Height = 50
+        ElseIf randomNumber = 3 Then
+            Obs1.Top = Platform.Top - (Player.Height / 2)
+            Obs1.Width = 100
+            Obs1.Height = 50
+        End If
+
+    End Function
+
+
 End Class
