@@ -49,7 +49,7 @@ Partial Class Form1
         'Obs1
         '
         Me.Obs1.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Obs1.Location = New System.Drawing.Point(408, 88)
+        Me.Obs1.Location = New System.Drawing.Point(409, 12)
         Me.Obs1.Name = "Obs1"
         Me.Obs1.Size = New System.Drawing.Size(55, 109)
         Me.Obs1.TabIndex = 0
