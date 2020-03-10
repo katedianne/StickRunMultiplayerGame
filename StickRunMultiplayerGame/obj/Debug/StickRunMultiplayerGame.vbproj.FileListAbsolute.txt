@@ -1,0 +1,11 @@
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\bin\Debug\StickRunMultiplayerGame.exe.config
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\bin\Debug\StickRunMultiplayerGame.exe
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\bin\Debug\StickRunMultiplayerGame.pdb
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\bin\Debug\StickRunMultiplayerGame.xml
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.vbprojAssemblyReference.cache
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.Form1.resources
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.Resources.resources
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.vbproj.GenerateResource.cache
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.exe
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.xml
+C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\obj\Debug\StickRunMultiplayerGame.pdb
