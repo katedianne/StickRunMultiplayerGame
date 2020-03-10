@@ -1,7 +1,10 @@
 ﻿Public Class Form1
     Dim movementSpeed As Integer = 0
     Dim count As Integer
+    Dim jumpUp As Boolean = False
+    Dim jumpDown As Boolean = False
     Dim obstacles_arr As ArrayList = New ArrayList()
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Start()
         movementSpeed = 3
@@ -22,6 +25,10 @@
             GenerateObs()
             'MessageBox.Show(count)
         End If
+
+        MovePlayer()
+
+
 
     End Sub
 
@@ -47,7 +54,28 @@
     End Class
 
     Function MovePlayer()
+        If jumpUp = True Then
+            Player.Top -= 15
+        End If
+
+        If Player.Top <= Platform.Top - Player.Height - 150 Then
+            jumpUp = False
+            jumpDown = True
+        End If
+
+        If jumpDown = True Then
+            Player.Top += 7
+            If Player.Bottom >= Platform.Top Then
+                Player.Top = Platform.Top - Player.Height
+                jumpDown = False
+            End If
+        End If
     End Function
+
+    Public Sub JumpButton_Click(sender As Object, e As EventArgs) Handles JumpButton.Click
+        jumpUp = True
+    End Sub
+
 
     Function MoveObs(movementSpeed)
         Dim removeOne As Boolean = False
@@ -71,6 +99,13 @@
         '    Timer1.Stop()
         '    MessageBox.Show("You're Dead!")
         'End If
+
+        For Each obs In obstacles_arr
+            If obs.Left <= Player.Right And Player.Top <= obs.Bottom And Player.Bottom >= obs.Top Then
+                Timer1.Stop()
+                MessageBox.Show("You're Dead!")
+            End If
+        Next
     End Function
 
     Function GenerateObs()
