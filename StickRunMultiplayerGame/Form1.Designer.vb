@@ -26,6 +26,7 @@ Partial Class Form1
         Me.Player = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Platform = New System.Windows.Forms.PictureBox()
+        Me.JumpButton = New System.Windows.Forms.Button()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Platform, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -33,7 +34,7 @@ Partial Class Form1
         'Player
         '
         Me.Player.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Player.Location = New System.Drawing.Point(109, 166)
+        Me.Player.Location = New System.Drawing.Point(102, 172)
         Me.Player.Name = "Player"
         Me.Player.Size = New System.Drawing.Size(50, 100)
         Me.Player.TabIndex = 0
@@ -52,11 +53,21 @@ Partial Class Form1
         Me.Platform.TabIndex = 1
         Me.Platform.TabStop = False
         '
+        'JumpButton
+        '
+        Me.JumpButton.Location = New System.Drawing.Point(168, 334)
+        Me.JumpButton.Name = "JumpButton"
+        Me.JumpButton.Size = New System.Drawing.Size(75, 23)
+        Me.JumpButton.TabIndex = 3
+        Me.JumpButton.Text = "Jump"
+        Me.JumpButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.JumpButton)
         Me.Controls.Add(Me.Platform)
         Me.Controls.Add(Me.Player)
         Me.Name = "Form1"
@@ -70,4 +81,5 @@ Partial Class Form1
     Friend WithEvents Player As PictureBox
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Platform As PictureBox
+    Friend WithEvents JumpButton As Button
 End Class
