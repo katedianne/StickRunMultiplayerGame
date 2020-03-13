@@ -15,20 +15,21 @@
 
         count += 20
 
-        If count Mod 200 = 0 Then
+
+        If count Mod 1000 = 0 Then
             movementSpeed += 1
         End If
 
         MoveObs(movementSpeed)
         Collision()
 
+        'Generate obs every 2 seconds
         If count Mod 750 = 0 Then
             GenerateObs()
-            'MessageBox.Show(count)
         End If
 
-        MovePlayer()
 
+        MovePlayer()
 
 
     End Sub
@@ -113,6 +114,7 @@
         '    MessageBox.Show("You're Dead!")
         'End If
 
+
         For Each obs In obstacles_arr
             If obs.Left <= Player.Right And Player.Top <= obs.Bottom And Player.Bottom >= obs.Top Then
                 Timer1.Stop()
@@ -130,13 +132,13 @@
         randomNumber = Math.Ceiling(Rnd() * upperLimit)
 
         If randomNumber = 1 Then
-            obstacle.BackColor = Color.Aquamarine
+            obstacle.BackColor = Color.Red
             obstacle.Top = Platform.Top - Player.Height - (Player.Height / 2)
             obstacle.Left = Me.Width - 100
             obstacle.Width = 50
             obstacle.Height = 100
         ElseIf randomNumber = 2 Then
-            obstacle.BackColor = Color.Red
+            obstacle.BackColor = Color.Blue
             obstacle.Top = Platform.Top - (Player.Height / 2)
             obstacle.Left = Me.Width - 100
             obstacle.Width = 50
