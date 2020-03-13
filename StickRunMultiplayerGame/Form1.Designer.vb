@@ -27,6 +27,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Platform = New System.Windows.Forms.PictureBox()
         Me.JumpButton = New System.Windows.Forms.Button()
+        Me.SlideButton = New System.Windows.Forms.Button()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Platform, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -62,11 +63,21 @@ Partial Class Form1
         Me.JumpButton.Text = "Jump"
         Me.JumpButton.UseVisualStyleBackColor = True
         '
+        'SlideButton
+        '
+        Me.SlideButton.Location = New System.Drawing.Point(288, 334)
+        Me.SlideButton.Name = "SlideButton"
+        Me.SlideButton.Size = New System.Drawing.Size(75, 23)
+        Me.SlideButton.TabIndex = 4
+        Me.SlideButton.Text = "Slide"
+        Me.SlideButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.SlideButton)
         Me.Controls.Add(Me.JumpButton)
         Me.Controls.Add(Me.Platform)
         Me.Controls.Add(Me.Player)
@@ -82,4 +93,5 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Platform As PictureBox
     Friend WithEvents JumpButton As Button
+    Friend WithEvents SlideButton As Button
 End Class

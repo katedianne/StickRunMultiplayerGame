@@ -3,6 +3,7 @@
     Dim count As Integer
     Dim jumpUp As Boolean = False
     Dim jumpDown As Boolean = False
+    Dim slide As Boolean = False
     Dim obstacles_arr As ArrayList = New ArrayList()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,9 +15,9 @@
 
         count += 20
 
-        'If count Mod 10 = 0 Then
-        '    movementSpeed += 3
-        'End If
+        If count Mod 200 = 0 Then
+            movementSpeed += 1
+        End If
 
         MoveObs(movementSpeed)
         Collision()
@@ -70,10 +71,22 @@
                 jumpDown = False
             End If
         End If
+
+        'If slide = True Then
+        '    Player.Height -= 10
+        '    Player.Top = Platform.Top - Player.Height
+        '    If Player.Height <= 40 Then
+        '        Player.Height = 40
+        '    End If
+        'End If
     End Function
 
     Public Sub JumpButton_Click(sender As Object, e As EventArgs) Handles JumpButton.Click
         jumpUp = True
+    End Sub
+
+    Private Sub SlideButton_Click(sender As Object, e As EventArgs) Handles SlideButton.Click
+        slide = True
     End Sub
 
 
