@@ -95,12 +95,12 @@ Public Class Form1
                     player_generated.Height = 50
                     player_generated.Width = 75
                     player_generated.Top = Platform.Top - player_generated.Height
-                    player_generated.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Slide\Slide Dex.gif"))
+                    player_generated.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures\Characters\Dex\Slide\Slide Dex.gif"))
                 Else
                     player_generated.Height = 75
                     player_generated.Width = 50
                     player_generated.Top = Platform.Top - player_generated.Height
-                    player_generated.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Run\Run Dex.gif"))
+                    player_generated.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures\Characters\Dex\Run\Run Dex.gif"))
                     slideState = False
                 End If
             Next
@@ -158,8 +158,7 @@ Public Class Form1
         Dim player As New PictureBox
         player.Parent = bg2
         player.BackColor = Color.Transparent
-        player.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Run\Run Dex.gif"))
-        MessageBox.Show(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Run\Run Dex.gif")))
+        player.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures\Characters\Dex\Run\Run Dex.gif"))
         player.BackgroundImageLayout = ImageLayout.Stretch
         player.Height = 65
         player.Width = 50
@@ -185,8 +184,8 @@ Public Class Form1
         If randomNumber = 1 Then
             obstacle.Parent = bg2
             obstacle.BackColor = Color.Transparent
-            obstacle.BackgroundImage = My.Resources.snake
-            obstacle.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Obs\lamok.gif"))
+            obstacle.BackgroundImageLayout = ImageLayout.Stretch
+            obstacle.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "pictures\Obs\lamok.gif"))
             obstacle.Width = 25
             obstacle.Height = 25
             obstacle.Top = Platform.Top - (obstacle.Height * 3)
