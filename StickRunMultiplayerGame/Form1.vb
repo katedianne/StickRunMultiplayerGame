@@ -2,10 +2,13 @@
 
 Public Class Form1
     Dim movementSpeed As Integer = 0
+    Dim obsGenRate As Integer = 750
     Dim count As Integer
     Dim jumpUp As Boolean = False
     Dim jumpDown As Boolean = False
-    Dim slide As Boolean = False
+    Dim maxSlideTime As Long = 0
+    Dim slidePrepare As Boolean = False
+    Dim slideState As Boolean = False
     Dim obstacles_arr As ArrayList = New ArrayList()
     Dim players_arr As ArrayList = New ArrayList()
 
@@ -23,13 +26,14 @@ Public Class Form1
 
         If count Mod 2000 = 0 Then
             movementSpeed += 1
+            obsGenRate -= 5
         End If
 
         MoveObs(movementSpeed)
         Collision()
 
         'Generate obs every 2 seconds
-        If count Mod 750 = 0 Then
+        If count Mod obsGenRate = 0 Then
             GenerateObs()
         End If
 
@@ -62,17 +66,17 @@ Public Class Form1
 
     Function MovePlayer()
         For Each player_generated In players_arr
-            If jumpUp = True Then
+            If jumpUp Then
                 player_generated.Top -= 13
             End If
 
-            If player_generated.Top <= Platform.Top - player_generated.Height - 170 Then
+            If player_generated.Top <= Platform.Top - player_generated.Height - 120 Then
                 jumpUp = False
                 jumpDown = True
             End If
 
-            If jumpDown = True Then
-                player_generated.Top += 5
+            If jumpDown Then
+                player_generated.Top += 8
                 If player_generated.Bottom >= Platform.Top Then
                     player_generated.Top = Platform.Top - player_generated.Height
                     jumpDown = False
@@ -80,15 +84,37 @@ Public Class Form1
             End If
         Next
 
-
-        'If slide = True Then
-        '    Player.Height -= 10
-        '    Player.Top = Platform.Top - Player.Height
-        '    If Player.Height <= 40 Then
-        '        Player.Height = 40
-        '    End If
-        'End If
+        If slidePrepare Then
+            maxSlideTime = count + 1000
+            slideState = True
+            slidePrepare = False
+        End If
+        If slideState Then
+            For Each player_generated In players_arr
+                If count <= maxSlideTime Then
+                    player_generated.Height = 50
+                    player_generated.Width = 75
+                    player_generated.Top = Platform.Top - player_generated.Height
+                    player_generated.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Slide\Slide Dex.gif"))
+                Else
+                    player_generated.Height = 75
+                    player_generated.Width = 50
+                    player_generated.Top = Platform.Top - player_generated.Height
+                    player_generated.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Run\Run Dex.gif"))
+                    slideState = False
+                End If
+            Next
+        End If
     End Function
+
+    Function slide_time()
+        If slidePrepare Then
+            maxSlideTime = count + 3000
+            slideState = True
+            slidePrepare = False
+        End If
+    End Function
+
 
 
     Function MoveObs(movementSpeed)
@@ -120,7 +146,7 @@ Public Class Form1
 
         For Each _obs In obstacles_arr
             For Each player_generated In players_arr
-                If _obs.Left <= player_generated.Right And player_generated.Top <= _obs.Bottom And player_generated.Bottom >= _obs.Top And player_generated.Left <= _obs.Right Then
+                If _obs.Left <= player_generated.Right And player_generated.Top + 5 <= _obs.Bottom And player_generated.Bottom >= _obs.Top And player_generated.Left + 2 <= _obs.Right Then
                     Timer1.Stop()
                     MessageBox.Show("You're Dead!")
                 End If
@@ -132,7 +158,8 @@ Public Class Form1
         Dim player As New PictureBox
         player.Parent = bg2
         player.BackColor = Color.Transparent
-        player.ImageLocation = "C:\Users\Anne\source\repos\StickRunMultiplayerGame\StickRunMultiplayerGame\bin\Debug\pictures\Characters\Dex\Run\Run Dex.gif"
+        player.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Run\Run Dex.gif"))
+        MessageBox.Show(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Characters\Dex\Run\Run Dex.gif")))
         player.BackgroundImageLayout = ImageLayout.Stretch
         player.Height = 65
         player.Width = 50
@@ -151,37 +178,37 @@ Public Class Form1
         Dim randomNumber As Double
         Dim upperLimit As Integer = 3
 
-        Dim image_src As Image = My.Resources.spike_obs
+        Dim image_src As Image = My.Resources.spike
 
         randomNumber = Math.Ceiling(Rnd() * upperLimit)
 
         If randomNumber = 1 Then
             obstacle.Parent = bg2
             obstacle.BackColor = Color.Transparent
-            obstacle.BackgroundImage = image_src
-            obstacle.BackgroundImageLayout = ImageLayout.Stretch
-            obstacle.Top = Platform.Top - Player.Height - (Player.Height / 2)
+            obstacle.BackgroundImage = My.Resources.snake
+            obstacle.ImageLocation = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "\pictures\Obs\lamok.gif"))
+            obstacle.Width = 25
+            obstacle.Height = 25
+            obstacle.Top = Platform.Top - (obstacle.Height * 3)
             obstacle.Left = Me.Width - 100
-            obstacle.Width = 50
-            obstacle.Height = 100
         ElseIf randomNumber = 2 Then
             obstacle.Parent = bg2
             obstacle.BackColor = Color.Transparent
-            obstacle.BackgroundImage = image_src
+            obstacle.BackgroundImage = My.Resources.snake
             obstacle.BackgroundImageLayout = ImageLayout.Stretch
-            obstacle.Top = Platform.Top - (Player.Height / 2)
+            obstacle.Width = 25
+            obstacle.Height = 25
+            obstacle.Top = Platform.Top - obstacle.Height
             obstacle.Left = Me.Width - 100
-            obstacle.Width = 50
-            obstacle.Height = 50
         ElseIf randomNumber = 3 Then
             obstacle.Parent = bg2
             obstacle.BackColor = Color.Transparent
-            obstacle.BackgroundImage = image_src
+            obstacle.BackgroundImage = My.Resources.spike
             obstacle.BackgroundImageLayout = ImageLayout.Stretch
-            obstacle.Top = Platform.Top - (Player.Height / 2)
+            obstacle.Width = 50
+            obstacle.Height = 25
+            obstacle.Top = Platform.Top - obstacle.Height
             obstacle.Left = Me.Width - 100
-            obstacle.Width = 100
-            obstacle.Height = 50
         End If
         obstacles_arr.Add(obstacle)
         bg2.Controls.Add(obstacle)
@@ -194,6 +221,6 @@ Public Class Form1
     End Sub
 
     Private Sub btnslide_Click(sender As Object, e As EventArgs) Handles btnslide.Click
-        slide = True
+        slidePrepare = True
     End Sub
 End Class

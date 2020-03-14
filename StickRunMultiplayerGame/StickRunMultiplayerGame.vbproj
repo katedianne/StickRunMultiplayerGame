@@ -134,5 +134,11 @@
   <ItemGroup>
     <None Include="bin\Debug\pictures\Characters\Dex\Run\Run Dex.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\pictures\Obs\snake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\pictures\Obs\spike.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
