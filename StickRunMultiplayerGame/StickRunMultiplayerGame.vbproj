@@ -119,5 +119,20 @@
     </None>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\obs1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spike_obs.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\pictures\Obs\obs1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\pictures\Characters\Dex\Run\Run Dex.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
